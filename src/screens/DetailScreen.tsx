@@ -1,5 +1,5 @@
-import { StackScreenProps } from "@react-navigation/stack";
 import React from "react";
+import { StackScreenProps } from "@react-navigation/stack";
 import { ActivityIndicator, Dimensions, Image, StyleSheet, Text, View } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { RootStackParams } from "../navigation/Navigation";
