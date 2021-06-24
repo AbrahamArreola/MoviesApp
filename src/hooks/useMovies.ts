@@ -1,4 +1,4 @@
-import react, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { MovieRequest } from "../api/APIRequest";
 import { MovieDBMoviesResponse, Movie } from "../interfaces/movie-interfaces";
 
@@ -18,7 +18,7 @@ const moviesInitState: IMoviesState = {
 
 export const useMovies = () => {
     const [moviesState, setMoviesState] = useState<IMoviesState>(moviesInitState);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const getMovies = async () => {
         try {
