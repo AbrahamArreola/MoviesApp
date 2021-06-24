@@ -1,10 +1,11 @@
 import { StackScreenProps } from "@react-navigation/stack";
 import React from "react";
-import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
+import { ActivityIndicator, Dimensions, Image, StyleSheet, Text, View } from "react-native";
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { RootStackParams } from "../navigation/Navigation";
-import Icon from "react-native-vector-icons/Ionicons";
 import { useMovieDetails } from "../hooks/useMovieDetails";
+import { MovieDetails } from "../components/MovieDetails";
+import Icon from "react-native-vector-icons/Ionicons";
 
 interface IProps extends StackScreenProps<RootStackParams, "DetailScreen"> {}
 
@@ -47,9 +48,16 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: "bold",
     },
+    backButton: {
+        position: "absolute",
+        zIndex: 999,
+        elevation: 12,
+        top: 20,
+        left: 5,
+    },
 });
 
-export const DetailScreen = ({ route }: IProps) => {
+export const DetailScreen = ({ route, navigation }: IProps) => {
     const movie = route.params;
 
     const uri = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
@@ -69,8 +77,16 @@ export const DetailScreen = ({ route }: IProps) => {
                 <Text style={styles.title}>{movie.original_title}</Text>
             </View>
 
-            <View style={styles.marginContainer}>
-                <Icon name="star-outline" color="grey" size={20} />
+            {isLoading ? (
+                <ActivityIndicator size={35} color="grey" style={{ marginTop: 20 }} />
+            ) : (
+                <MovieDetails movieDetails={movieDetails!} cast={cast} />
+            )}
+
+            <View style={styles.backButton}>
+                <TouchableOpacity onPress={() => navigation.pop()}>
+                    <Icon color="#FFF" name="arrow-back-outline" size={60} />
+                </TouchableOpacity>
             </View>
         </ScrollView>
     );

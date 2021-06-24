@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { MovieRequest } from "../api/APIRequest";
-import { MovieDetails } from "../interfaces/movie-interfaces";
+import { IMovieDetails } from "../interfaces/movie-interfaces";
 import { CreditsInfo, Cast } from "../interfaces/credits-interface";
 
 interface IMovieDetailsState {
     isLoading: boolean;
-    movieDetails?: MovieDetails;
+    movieDetails?: IMovieDetails;
     cast: Cast[];
 }
 
@@ -20,7 +20,7 @@ export const useMovieDetails = (movieId: number) => {
 
     const getMovieDetails = async () => {
         try {
-            const movieDetailsPromise = MovieRequest.get<MovieDetails>(`${movieId}`);
+            const movieDetailsPromise = MovieRequest.get<IMovieDetails>(`${movieId}`);
             const creditsInfoPromise = MovieRequest.get<CreditsInfo>(`${movieId}/credits`);
 
             const [movieDetailsResp, castResp] = await Promise.all([movieDetailsPromise, creditsInfoPromise]);

@@ -22,7 +22,7 @@ export const HomeScreen = () => {
     if (isLoading) {
         return (
             <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-                <ActivityIndicator color="blue" size={100} />
+                <ActivityIndicator color="grey" size={100} />
             </View>
         );
     }

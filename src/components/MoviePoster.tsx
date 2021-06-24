@@ -1,5 +1,5 @@
-import { useNavigation } from "@react-navigation/core";
 import React from "react";
+import { useNavigation } from "@react-navigation/core";
 import { Image, StyleSheet, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Movie } from "../interfaces/movie-interfaces";

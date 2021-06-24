@@ -32,7 +32,7 @@ export enum OriginalLanguage {
     En = "en",
     Ja = "ja",
 }
-export interface MovieDetails {
+export interface IMovieDetails {
     adult: boolean;
     backdrop_path: string;
     belongs_to_collection: null;
